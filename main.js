@@ -17,3 +17,18 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+const loopxStats = document.querySelector('[data-loopx-stat="stars"]');
+if (loopxStats) {
+  fetch('https://api.github.com/repos/loopx-project/loopx')
+    .then((response) => response.ok ? response.json() : Promise.reject(response))
+    .then((repo) => {
+      for (const [stat, count] of Object.entries({ stars: repo.stargazers_count, forks: repo.forks_count })) {
+        const element = document.querySelector(`[data-loopx-stat="${stat}"]`);
+        if (element && Number.isInteger(count) && count >= 0) {
+          element.textContent = count.toLocaleString('en-US');
+        }
+      }
+    })
+    .catch(() => {});
+}
