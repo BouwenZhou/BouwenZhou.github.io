@@ -99,8 +99,8 @@
     <h2>News</h2>
     <ul>
       <li><span class="date">2026.09</span> <span>Released <a href="#recreationworld"><strong>RecreationWorld</strong></a>, scalable and verifiable environments for hybrid Computer-Use Agents.</span></li>
-      <li><span class="date">2026.08</span> <span><a href="#loopx"><strong>LoopX</strong></a>, our open-source framework for long-horizon agents, reached <a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a>.</span></li>
       <li><span class="date">2026.08</span> <span><em>WeaveBench</em> and <em>ST-Lite</em> accepted by <strong>EMNLP 2026</strong>.</span></li>
+      <li><time class="date" datetime="2026-08-05">2026.08</time> <span><a href="#loopx"><strong>LoopX</strong></a> reached <a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a> on August 5.</span></li>
       <li><span class="date">2026.07</span> <span>Started a research internship with the <strong>Qwen Team</strong> at Alibaba.</span></li>
       <li><span class="date">2026.06</span> <span>Released <em>WeaveBench</em>, a benchmark for hybrid-interface Computer-Use Agents.</span></li>
       <li><span class="date">2026.04</span> <span>Started a research internship at <strong>Huawei Multimodal Lab</strong>.</span></li>
@@ -117,17 +117,6 @@
       <h3 class="thread-title">Universal Digital Agents</h3>
       <p class="thread-desc">Research spanning GUI interaction, terminal and tool use, code execution, long-horizon reasoning, evaluation, and efficient deployment.</p>
 
-      <div class="pub">
-        <div class="pub-thumb"><img src="assets/papers/weavebench.png" alt="WeaveBench task examples"></div>
-        <div class="pub-body">
-          <p class="pub-title"><a href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</a></p>
-          <p class="pub-authors"><strong>Bowen Zhou</strong>, et al.</p>
-          <p class="pub-venue"><span class="badge first">First Author</span> <span class="badge conf">EMNLP 2026</span></p>
-          <p class="pub-tldr">A benchmark of 114 real-world tasks across eight domains that require agents to interleave GUI observation with CLI and code execution; the best evaluated system reaches only 41.2% success.</p>
-          <p class="pub-links"><a href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">Paper</a> <span class="sep">·</span> <a href="https://weavebench.github.io/" target="_blank" rel="noopener">Project</a> <span class="sep">·</span> <a href="https://github.com/weavebench/WeaveBench" target="_blank" rel="noopener">Code</a> <span class="sep">·</span> <a href="https://huggingface.co/datasets/wanlilll/WeaveBench" target="_blank" rel="noopener">Dataset</a></p>
-        </div>
-      </div>
-
       <div class="pub" id="recreationworld">
         <a class="pub-thumb" href="assets/recreationworld-figure.webp" target="_blank" rel="noopener" aria-label="View the full RecreationWorld overview figure">
           <img src="assets/recreationworld-preview.webp" alt="RecreationWorld overview: five-platform recreation tasks and transfer gains from training." width="1396" height="801" loading="lazy" decoding="async">
@@ -135,7 +124,6 @@
         </a>
         <div class="pub-body">
           <p class="pub-title"><a href="https://arxiv.org/abs/2609.22000" target="_blank" rel="noopener">RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents</a></p>
-          <p class="pub-authors"><strong>Bowen Zhou</strong>, et al.</p>
           <p class="pub-venue"><span class="badge role">Contributor</span> <span class="badge conf">Technical Report · 2026</span></p>
           <p class="pub-tldr">A framework that turns software recreation into scalable training environments with verifiable rewards, alongside a 250-task benchmark across Ubuntu, macOS, Windows, Android, and Web.</p>
           <p class="pub-links"><a href="https://arxiv.org/pdf/2609.22000" target="_blank" rel="noopener">Paper</a> <a href="https://recreation-bench.cc" target="_blank" rel="noopener">Project</a> <a href="https://github.com/QwenLM/RecreationWorld" target="_blank" rel="noopener">Code</a> <a href="https://huggingface.co/datasets/Qwen/RecreationBench" target="_blank" rel="noopener">Dataset</a></p>
@@ -143,10 +131,19 @@
       </div>
 
       <div class="pub">
+        <div class="pub-thumb"><img src="assets/papers/weavebench.png" alt="WeaveBench task examples"></div>
+        <div class="pub-body">
+          <p class="pub-title"><a href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</a></p>
+          <p class="pub-venue"><span class="badge first">First Author</span> <span class="badge conf">EMNLP 2026</span></p>
+          <p class="pub-tldr">A benchmark of 114 real-world tasks across eight domains that require agents to interleave GUI observation with CLI and code execution; the best evaluated system reaches only 41.2% success.</p>
+          <p class="pub-links"><a href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">Paper</a> <span class="sep">·</span> <a href="https://weavebench.github.io/" target="_blank" rel="noopener">Project</a> <span class="sep">·</span> <a href="https://github.com/weavebench/WeaveBench" target="_blank" rel="noopener">Code</a> <span class="sep">·</span> <a href="https://huggingface.co/datasets/wanlilll/WeaveBench" target="_blank" rel="noopener">Dataset</a></p>
+        </div>
+      </div>
+
+      <div class="pub">
         <div class="pub-thumb"><img src="assets/papers/st-lite.png" alt="ST-Lite overview"></div>
         <div class="pub-body">
           <p class="pub-title"><a href="https://arxiv.org/abs/2603.00188" target="_blank" rel="noopener">ST-Lite: Training-Free KV Cache Compression with Spatio-Trajectory Guidance for Long-Horizon GUI Agents</a></p>
-          <p class="pub-authors"><strong>Bowen Zhou</strong>, et al.</p>
           <p class="pub-venue"><span class="badge first">First Author</span> <span class="badge conf">EMNLP 2026</span></p>
           <p class="pub-tldr">A training-free KV cache compression method tailored to GUI interaction traces, matching or exceeding Full Cache accuracy at a 20% budget while delivering up to 2.35× decoding speedup.</p>
           <p class="pub-links"><a href="https://arxiv.org/abs/2603.00188" target="_blank" rel="noopener">Paper</a> <span class="sep">·</span> <a href="https://github.com/BouwenZhou/ST-Lite" target="_blank" rel="noopener">Code</a></p>
@@ -157,7 +154,6 @@
         <div class="pub-thumb"><img src="assets/papers/guipruner.png" alt="GUIPruner method overview"></div>
         <div class="pub-body">
           <p class="pub-title"><a href="https://arxiv.org/abs/2602.23235" target="_blank" rel="noopener">GUIPruner: Spatio-Temporal Token Pruning for Efficient High-Resolution GUI Agents</a></p>
-          <p class="pub-authors"><strong>Bowen Zhou</strong>, et al.</p>
           <p class="pub-venue"><span class="badge first">First Author</span> <span class="badge conf">arXiv 2026</span></p>
           <p class="pub-tldr">A training-free framework that combines temporal-adaptive resolution with structure-aware visual-token pruning, achieving a 3.4× FLOPs reduction and a 3.3× vision-encoding speedup while retaining over 94% of the original performance.</p>
           <p class="pub-links"><a href="https://arxiv.org/abs/2602.23235" target="_blank" rel="noopener">Paper</a></p>
@@ -177,7 +173,7 @@
           <h3><a href="https://github.com/loopx-project/loopx" target="_blank" rel="noopener">LoopX</a></h3>
           <span class="opensource-stats" aria-label="LoopX GitHub statistics"><a href="https://github.com/loopx-project/loopx/stargazers" target="_blank" rel="noopener"><span data-loopx-stat="stars">5,923</span> stars</a> · <a href="https://github.com/loopx-project/loopx/forks" target="_blank" rel="noopener"><span data-loopx-stat="forks">563</span> forks</a></span>
         </div>
-        <p class="opensource-role">Contributor · Long-Horizon Agent Control Plane</p>
+        <p class="opensource-role">Membership · Long-Horizon Agent Control Plane</p>
         <p class="opensource-highlight"><a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a> <span>· Aug 5, 2026</span></p>
         <p class="opensource-desc">An open-source framework for long-horizon agents that preserves task state across sessions and coordinates work across Codex, Claude Code, and other agent tools. It supports recovery, handoffs, and human oversight so agents can continue complex work reliably.</p>
         <p class="pub-links"><a href="https://loopx-project.github.io/loopx/" target="_blank" rel="noopener">Project</a> <a href="https://github.com/loopx-project/loopx" target="_blank" rel="noopener">Code</a> <a href="https://loopx-project.github.io/loopx/docs/" target="_blank" rel="noopener">Docs</a></p>
