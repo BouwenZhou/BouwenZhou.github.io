@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowen Zhou</title>
+<meta name="description" content="Bowen Zhou — M.S. student at Tsinghua University researching Universal Digital Agents across GUI, CLI, and code environments.">
+<link rel="icon" href="../assets/avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=b1">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar-name" href="#top"><img src="../assets/avatar.jpg" alt="">Bowen Zhou</a>
+  <nav>
+    <a href="#research">Research</a>
+    <a href="#opensource">Open Source</a>
+    <a href="#experience">Experience</a>
+    <a href="#news">News</a>
+  </nav>
+  <a class="bar-cta" href="mailto:zhoubw25@mails.tsinghua.edu.cn">Say hi</a>
+</header>
+
+<main id="top">
+
+  <!-- ===== Intro bento ===== -->
+  <section class="bento">
+
+    <div class="tile t-hello">
+      <p class="hello-kicker">Hi, I'm</p>
+      <h1>Bowen Zhou</h1>
+      <p class="hello-lead">I build <mark>Universal Digital Agents</mark> — AI that can operate computers through
+        GUIs, terminals, and code, the way people do.</p>
+      <div class="hello-links">
+        <a class="pill dark" href="mailto:zhoubw25@mails.tsinghua.edu.cn">Email me</a>
+        <a class="pill" href="https://scholar.google.com/citations?user=aURLC5gAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+        <a class="pill" href="https://github.com/BouwenZhou" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="tile t-photo">
+      <img src="../assets/avatar.jpg" alt="Bowen Zhou">
+    </div>
+
+    <div class="tile t-now">
+      <span class="live"><i></i>Now</span>
+      <img class="now-logo" src="../assets/logos/qwen.png" alt="Qwen">
+      <p><strong>Research Intern</strong><br>Qwen Team, Alibaba</p>
+      <p class="muted">Advised by Que Shen</p>
+    </div>
+
+    <div class="tile t-school">
+      <img src="../assets/logos/tsinghua-emblem.png" alt="Tsinghua University emblem">
+      <p><strong>Tsinghua University</strong><br><span class="muted">M.S. · Artificial Intelligence</span></p>
+    </div>
+
+    <div class="tile t-stat t-stat-a">
+      <span class="stat-num">#1</span>
+      <span class="stat-label">GitHub Trending<br>with LoopX</span>
+    </div>
+
+    <div class="tile t-stat t-stat-b">
+      <span class="stat-num" data-loopx-stat="stars-short">5.9k</span>
+      <span class="stat-label">stars on<br>LoopX</span>
+    </div>
+
+    <div class="tile t-stat t-stat-c">
+      <span class="stat-num">2×</span>
+      <span class="stat-label">EMNLP 2026<br>first-author papers</span>
+    </div>
+
+    <div class="tile t-about">
+      <h2 class="tile-title">About</h2>
+      <p>
+        I am an M.S. student in <strong>Artificial Intelligence</strong> at <strong>Tsinghua University</strong>.
+        Previously, I received my B.Eng. in Artificial Intelligence from <strong>Dalian University of Technology</strong>.
+      </p>
+      <p>
+        My research focuses on building <strong>Universal Digital Agents (UDAs)</strong>, with an emphasis on
+        <strong>Computer-Use Agents</strong>. I study how agents can understand and operate across digital environments,
+        including graphical interfaces, terminals, and code. I am particularly interested in long-horizon reasoning,
+        post-training, and <strong>Agentic RL</strong> for UDAs.
+      </p>
+      <p>
+        I aim to make computer use a core capability of frontier models and to bring UDAs into everyday life.
+        I believe UDAs represent an important path toward <strong>AGI</strong>.
+      </p>
+    </div>
+
+    <div class="tile t-focus">
+      <h2 class="tile-title">I work on</h2>
+      <ul class="chips">
+        <li>Computer-Use Agents</li>
+        <li>GUI × CLI × Code</li>
+        <li>Long-horizon reasoning</li>
+        <li>Agentic RL</li>
+        <li>Efficient inference</li>
+        <li>Benchmarks &amp; environments</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ===== Research ===== -->
+  <section class="section" id="research">
+    <div class="section-head">
+      <h2>Research</h2>
+      <p>Toward universal agents that can perceive, reason, and act across diverse digital interfaces.</p>
+    </div>
+
+    <div class="papers">
+      <article class="paper paper-wide" id="recreationworld">
+        <a class="paper-img" href="../assets/recreationworld-figure.webp" target="_blank" rel="noopener"><img src="../assets/recreationworld-preview.webp" alt="RecreationWorld overview" loading="lazy"></a>
+        <div class="paper-body">
+          <div class="paper-tags"><span class="tag blue">Technical Report · 2026</span><span class="tag">Contributor</span></div>
+          <h3><a href="https://arxiv.org/abs/2609.22000" target="_blank" rel="noopener">RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents</a></h3>
+          <p>A framework that turns software recreation into scalable training environments with verifiable rewards, alongside a 250-task benchmark across Ubuntu, macOS, Windows, Android, and Web.</p>
+          <div class="paper-links"><a href="https://arxiv.org/pdf/2609.22000" target="_blank" rel="noopener">Paper</a><a href="https://recreation-bench.cc" target="_blank" rel="noopener">Project</a><a href="https://github.com/QwenLM/RecreationWorld" target="_blank" rel="noopener">Code</a><a href="https://huggingface.co/datasets/Qwen/RecreationBench" target="_blank" rel="noopener">Dataset</a></div>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="paper-img"><img src="../assets/papers/weavebench.png" alt="WeaveBench task examples" loading="lazy"></div>
+        <div class="paper-body">
+          <div class="paper-tags"><span class="tag blue">EMNLP 2026</span><span class="tag orange">First Author</span></div>
+          <h3><a href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</a></h3>
+          <p>114 real-world tasks across eight domains that require agents to interleave GUI observation with CLI and code execution; the best evaluated system reaches only 41.2% success.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">Paper</a><a href="https://weavebench.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/weavebench/WeaveBench" target="_blank" rel="noopener">Code</a><a href="https://huggingface.co/datasets/wanlilll/WeaveBench" target="_blank" rel="noopener">Dataset</a></div>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="paper-img"><img src="../assets/papers/st-lite.png" alt="ST-Lite overview" loading="lazy"></div>
+        <div class="paper-body">
+          <div class="paper-tags"><span class="tag blue">EMNLP 2026</span><span class="tag orange">First Author</span></div>
+          <h3><a href="https://arxiv.org/abs/2603.00188" target="_blank" rel="noopener">ST-Lite: Training-Free KV Cache Compression with Spatio-Trajectory Guidance for Long-Horizon GUI Agents</a></h3>
+          <p>Matches or exceeds Full Cache accuracy at a 20% budget while delivering up to 2.35× decoding speedup.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2603.00188" target="_blank" rel="noopener">Paper</a><a href="https://github.com/BouwenZhou/ST-Lite" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="paper-img"><img src="../assets/papers/guipruner.png" alt="GUIPruner method overview" loading="lazy"></div>
+        <div class="paper-body">
+          <div class="paper-tags"><span class="tag blue">arXiv 2026</span><span class="tag orange">First Author</span></div>
+          <h3><a href="https://arxiv.org/abs/2602.23235" target="_blank" rel="noopener">GUIPruner: Spatio-Temporal Token Pruning for Efficient High-Resolution GUI Agents</a></h3>
+          <p>3.4× FLOPs reduction and 3.3× vision-encoding speedup while retaining over 94% of the original performance.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2602.23235" target="_blank" rel="noopener">Paper</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Open source ===== -->
+  <section class="section" id="opensource">
+    <div class="section-head"><h2>Open Source</h2></div>
+    <article class="loopx" id="loopx">
+      <div class="loopx-copy">
+        <div class="loopx-title">
+          <img src="../assets/loopx-logo.png" alt="LoopX logo">
+          <div>
+            <h3>LoopX</h3>
+            <p>Long-Horizon Agent Control Plane · Membership</p>
+          </div>
+        </div>
+        <p class="loopx-desc">An open-source framework for long-horizon agents that preserves task state across sessions and coordinates work across Codex, Claude Code, and other agent tools. It supports recovery, handoffs, and human oversight so agents can continue complex work reliably.</p>
+        <div class="hello-links">
+          <a class="pill light" href="https://github.com/loopx-project/loopx" target="_blank" rel="noopener">★ Star on GitHub</a>
+          <a class="pill ghost" href="https://loopx-project.github.io/loopx/" target="_blank" rel="noopener">Project ↗</a>
+          <a class="pill ghost" href="https://loopx-project.github.io/loopx/docs/" target="_blank" rel="noopener">Docs ↗</a>
+        </div>
+      </div>
+      <div class="loopx-stats">
+        <div><span data-loopx-stat="stars">5,923</span><small>stars</small></div>
+        <div><span data-loopx-stat="forks">563</span><small>forks</small></div>
+        <div><a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1</a><small>GitHub Trending · Aug 5</small></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== Experience + News ===== -->
+  <section class="section split">
+    <div id="experience">
+      <div class="section-head"><h2>Experience</h2></div>
+      <div class="tile list-tile">
+        <div class="exp">
+          <img src="../assets/logos/qwen.png" alt="Qwen">
+          <div><strong>Qwen Team, Alibaba Group</strong><span>Research Intern · Base Model Team · Advised by Que Shen</span></div>
+          <time>Jul 2026 – Now</time>
+        </div>
+        <div class="exp">
+          <img src="../assets/logos/huawei.svg" alt="Huawei">
+          <div><strong>Huawei Multimodal Lab</strong><span>Research Intern · Base Model Team</span></div>
+          <time>Apr – Jul 2026</time>
+        </div>
+        <div class="exp">
+          <img src="../assets/logos/msra.svg" alt="Microsoft Research Asia">
+          <div><strong>Microsoft Research Asia</strong><span>Research Collaboration · Remote · WeaveBench</span></div>
+          <time>Jan – May 2026</time>
+        </div>
+        <div class="exp">
+          <img src="../assets/logos/tsinghua-emblem.png" alt="Tsinghua University">
+          <div><strong>Tsinghua University</strong><span>M.S. in Artificial Intelligence</span></div>
+          <time>Present</time>
+        </div>
+        <div class="exp">
+          <img src="../assets/logos/dlut.png" alt="Dalian University of Technology">
+          <div><strong>Dalian University of Technology</strong><span>B.Eng. in Artificial Intelligence</span></div>
+          <time></time>
+        </div>
+      </div>
+    </div>
+
+    <div id="news">
+      <div class="section-head"><h2>News</h2></div>
+      <div class="tile list-tile news">
+        <p><time>2026.09</time><span>Released <a href="#recreationworld">RecreationWorld</a>, scalable and verifiable environments for hybrid Computer-Use Agents.</span></p>
+        <p><time>2026.08</time><span><em>WeaveBench</em> and <em>ST-Lite</em> accepted by <strong>EMNLP 2026</strong>.</span></p>
+        <p><time>2026.08</time><span><a href="#loopx">LoopX</a> reached <a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a> on August 5.</span></p>
+        <p><time>2026.07</time><span>Started a research internship with the <strong>Qwen Team</strong> at Alibaba.</span></p>
+        <p><time>2026.06</time><span>Released <em>WeaveBench</em>, a benchmark for hybrid-interface Computer-Use Agents.</span></p>
+        <p><time>2026.04</time><span>Started a research internship at <strong>Huawei Multimodal Lab</strong>.</span></p>
+        <p><time>2026.02</time><span>Released <em>ST-Lite</em> for efficient long-horizon GUI agents.</span></p>
+        <p><time>2026.01</time><span>Began a remote research collaboration with <strong>Microsoft Research Asia</strong>.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact">
+    <h2>Let's talk research — or life.</h2>
+    <p>I am open to research collaborations and opportunities.</p>
+    <a class="pill dark big" href="mailto:zhoubw25@mails.tsinghua.edu.cn">zhoubw25@mails.tsinghua.edu.cn</a>
+    <p class="skills-line">PyTorch · veRL · slime · vLLM · SGLang · Transformers · Docker · Kubernetes</p>
+  </section>
+
+</main>
+
+<footer class="foot">© 2026 Bowen Zhou · Last updated September 2026</footer>
+
+<script>
+  fetch('https://api.github.com/repos/loopx-project/loopx')
+    .then((r) => r.ok ? r.json() : Promise.reject(r))
+    .then((repo) => {
+      const set = (k, v) => document.querySelectorAll(`[data-loopx-stat="${k}"]`).forEach((el) => { el.textContent = v; });
+      if (Number.isInteger(repo.stargazers_count)) {
+        set('stars', repo.stargazers_count.toLocaleString('en-US'));
+        set('stars-short', (repo.stargazers_count / 1000).toFixed(1) + 'k');
+      }
+      if (Number.isInteger(repo.forks_count)) set('forks', repo.forks_count.toLocaleString('en-US'));
+    })
+    .catch(() => {});
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -6%' });
+  document.querySelectorAll('.tile, .paper, .loopx, .section-head').forEach((el) => { el.classList.add('rise'); io.observe(el); });
+</script>
+</body>
+</html>
