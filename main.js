@@ -134,7 +134,7 @@ const openLightbox = (el) => {
 };
 lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.classList.contains('lightbox-close')) closeLightbox(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-document.querySelectorAll('.fig-video, .motion, .feature-row .media-frame').forEach((el) => {
+document.querySelectorAll('.fig-video, .fig .motion, .feature-row .media-frame').forEach((el) => {
   const wrap = document.createElement('div');
   wrap.className = el.classList.contains('media-frame') ? 'zoomable zoom-rw' : 'zoomable';
   el.replaceWith(wrap);
