@@ -1,5 +1,20 @@
-const navLinks = [...document.querySelectorAll('.topnav a[href^="#"]')];
+const root = document.documentElement;
+const topbar = document.querySelector('.topbar');
+const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
 const sections = [...document.querySelectorAll('main section[id]')];
+
+// Theme toggle: explicit choice persists; otherwise follow the OS.
+document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+  const current = root.dataset.theme
+    || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.dataset.theme = next;
+  localStorage.setItem('theme', next);
+});
+
+const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 240);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -17,6 +32,23 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+// Fade sections in as they enter the viewport.
+const revealer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealer.unobserve(entry.target);
+      }
+    });
+  },
+  { rootMargin: '0px 0px -8%' },
+);
+document.querySelectorAll('.block').forEach((el) => {
+  el.classList.add('reveal');
+  revealer.observe(el);
+});
 
 const loopxStats = document.querySelector('[data-loopx-stat="stars"]');
 if (loopxStats) {
