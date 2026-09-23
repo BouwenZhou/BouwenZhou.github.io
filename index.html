@@ -9,14 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260923-f">
+<link rel="stylesheet" href="style.css?v=20260923-m">
 <script>
   (() => {
     const saved = localStorage.getItem('theme');
     if (saved) document.documentElement.dataset.theme = saved;
   })();
 </script>
-<script src="main.js?v=20260923-f" defer></script>
+<script src="main.js?v=20260923-m" defer></script>
+<script src="motion.js?v=20260923-m" defer></script>
 </head>
 <body id="top">
 
@@ -154,7 +155,7 @@
     <p class="section-note">Toward universal agents that can perceive, reason, and act across diverse digital interfaces.</p>
     <ol class="bibliography">
 
-      <li id="recreationworld" class="featured">
+      <li id="recreationworld" class="feature-row">
         <div class="media-frame">
           <div class="compare" data-compare aria-label="Original application versus recreation">
             <img class="cmp-ref" src="assets/media/rw_foodtruck_reference.webp" alt="Original application" loading="lazy">
@@ -190,20 +191,8 @@
         </div>
       </li>
 
-      <li class="featured">
-        <div class="media-frame dark">
-          <video class="demo" data-demo muted playsinline preload="metadata" poster="assets/media/wb_inkscape_vectorize_logo.jpg" src="assets/media/wb_inkscape_vectorize_logo.mp4"></video>
-          <span class="rec"><i></i>agent rollout · 8× speed</span>
-          <div class="media-bar">
-            <span class="media-caption" data-demo-caption>DES · Vectorize a logo into a print-ready bundle in Inkscape</span>
-            <span class="media-tabs" data-demo-tabs>
-              <button type="button" class="on" data-src="wb_inkscape_vectorize_logo" data-caption="DES · Vectorize a logo into a print-ready bundle in Inkscape">Inkscape</button>
-              <button type="button" data-src="wb_godot_scene_node_debug" data-caption="GAM · Debug a broken scene-graph node in Godot">Godot</button>
-              <button type="button" data-src="wb_meshlab_printability_audit" data-caption="SPA · Audit a 3D mesh for printability in MeshLab">MeshLab</button>
-              <button type="button" data-src="wb_darktable_raw_tonecurve_recover" data-caption="DES · Recover a blown-out RAW photo in darktable">darktable</button>
-            </span>
-          </div>
-        </div>
+      <li class="feature-row">
+        <div class="motion" data-motion="weavebench" aria-label="Animated explainer of WeaveBench"></div>
         <div class="entry">
           <abbr class="badge b-emnlp">EMNLP 2026</abbr>
           <div class="title">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</div>
@@ -222,10 +211,7 @@
       <li class="pair">
         <ol class="cards">
         <li class="card">
-          <div class="anim-frame">
-              <canvas class="anim" data-anim="stlite" aria-label="Illustration: KV cache compression along a long GUI trajectory"></canvas>
-              <span class="anim-tag">illustration</span>
-            </div>
+          <div class="motion" data-motion="stlite" aria-label="Animated explainer of ST-Lite"></div>
           <div class="entry">
             <abbr class="badge b-emnlp">EMNLP 2026</abbr>
             <div class="title">ST-Lite: Training-Free KV Cache Compression with Spatio-Trajectory Guidance for Long-Horizon GUI Agents</div>
@@ -240,10 +226,7 @@
           </div>
         </li>
         <li class="card">
-          <div class="anim-frame">
-              <canvas class="anim" data-anim="pruner" aria-label="Illustration: visual-token pruning on a high-resolution GUI screenshot"></canvas>
-              <span class="anim-tag">illustration</span>
-            </div>
+          <div class="motion" data-motion="guipruner" aria-label="Animated explainer of GUIPruner"></div>
           <div class="entry">
             <abbr class="badge b-arxiv">arXiv 2026</abbr>
             <div class="title">GUIPruner: Spatio-Temporal Token Pruning for Efficient High-Resolution GUI Agents</div>
@@ -262,7 +245,7 @@
 
     <!-- Open source -->
     <h2 id="opensource"><a href="#opensource">open source</a></h2>
-    <div class="project" id="loopx">
+    <div class="project project-motion" id="loopx">
       <a class="project-logo" href="https://loopx-project.github.io/loopx/" target="_blank" rel="noopener"><img src="assets/loopx-logo.png" alt="LoopX logo" loading="lazy"></a>
       <div>
         <div class="title"><a href="https://github.com/loopx-project/loopx" target="_blank" rel="noopener">LoopX</a>
@@ -270,11 +253,12 @@
         <div class="periodical">Membership · Long-Horizon Agent Control Plane · <a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a>, Aug 5, 2026</div>
         <p class="abstract open">An open-source framework for long-horizon agents that preserves task state across sessions and coordinates work across Codex, Claude Code, and other agent tools. It supports recovery, handoffs, and human oversight so agents can continue complex work reliably.</p>
         <div class="links">
-                  <a class="btn" href="https://loopx-project.github.io/loopx/" target="_blank" rel="noopener">Website</a>
+          <a class="btn" href="https://loopx-project.github.io/loopx/" target="_blank" rel="noopener">Website</a>
           <a class="btn" href="https://github.com/loopx-project/loopx" target="_blank" rel="noopener">Code</a>
           <a class="btn" href="https://loopx-project.github.io/loopx/docs/" target="_blank" rel="noopener">Docs</a>
         </div>
       </div>
+      <div class="motion" data-motion="loopx" aria-label="Animated explainer of LoopX"></div>
     </div>
 
     <!-- Experience -->
