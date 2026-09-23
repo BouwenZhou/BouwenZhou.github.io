@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260923-m">
+<link rel="stylesheet" href="style.css?v=20260923-s">
 <script>
   (() => {
     const saved = localStorage.getItem('theme');
@@ -17,7 +17,7 @@
   })();
 </script>
 <script src="main.js?v=20260923-m" defer></script>
-<script src="motion.js?v=20260923-m" defer></script>
+<script src="motion.js?v=20260923-s" defer></script>
 </head>
 <body id="top">
 
@@ -192,7 +192,7 @@
       </li>
 
       <li class="feature-row">
-        <div class="motion" data-motion="weavebench" aria-label="Animated explainer of WeaveBench"></div>
+        <figure class="fig"><div class="motion" data-motion="weavebench" role="img" aria-label="Animated figure"></div><figcaption><b>Case (OPS).</b> The agent spots a 503 spike on the dashboard (GUI), patches <code>nginx.conf</code> in the shell (CLI / code), and re-checks the dashboard. Neither channel alone can finish the task.</figcaption></figure>
         <div class="entry">
           <abbr class="badge b-emnlp">EMNLP 2026</abbr>
           <div class="title">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</div>
@@ -211,7 +211,7 @@
       <li class="pair">
         <ol class="cards">
         <li class="card">
-          <div class="motion" data-motion="stlite" aria-label="Animated explainer of ST-Lite"></div>
+          <figure class="fig"><div class="motion" data-motion="stlite" role="img" aria-label="Animated figure"></div><figcaption><b>Method.</b> ST-Lite keeps the current step in full and only the salient, still-attended tokens of earlier screenshots, holding the KV cache at a fixed 20% budget. Schematic.</figcaption></figure>
           <div class="entry">
             <abbr class="badge b-emnlp">EMNLP 2026</abbr>
             <div class="title">ST-Lite: Training-Free KV Cache Compression with Spatio-Trajectory Guidance for Long-Horizon GUI Agents</div>
@@ -226,7 +226,7 @@
           </div>
         </li>
         <li class="card">
-          <div class="motion" data-motion="guipruner" aria-label="Animated explainer of GUIPruner"></div>
+          <figure class="fig"><div class="motion" data-motion="guipruner" role="img" aria-label="Animated figure"></div><figcaption><b>Method.</b> Older frames are encoded at lower resolution, and flat background patches of the current screenshot are pruned by UI structure. Schematic; real screenshot from RecreationBench.</figcaption></figure>
           <div class="entry">
             <abbr class="badge b-arxiv">arXiv 2026</abbr>
             <div class="title">GUIPruner: Spatio-Temporal Token Pruning for Efficient High-Resolution GUI Agents</div>
@@ -258,7 +258,10 @@
           <a class="btn" href="https://loopx-project.github.io/loopx/docs/" target="_blank" rel="noopener">Docs</a>
         </div>
       </div>
-      <div class="motion" data-motion="loopx" aria-label="Animated explainer of LoopX"></div>
+      <figure class="fig">
+        <video class="fig-video" data-autoplay muted loop playsinline preload="metadata" poster="assets/media/loopx_demo.jpg" src="assets/media/loopx_demo.mp4"></video>
+        <figcaption><b>Demo.</b> The LoopX workspace turns scattered agent sessions into a goal board; when a new constraint arrives, the goal replans and evidence closes the loop. Clips from the official LoopX demos, sped up.</figcaption>
+      </figure>
     </div>
 
     <!-- Experience -->
