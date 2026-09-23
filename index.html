@@ -49,6 +49,9 @@
         <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener">Tsinghua University</a> ·
         Research Intern @ Qwen Team, Alibaba
       </p>
+      <p class="typer" aria-label="Building Universal Digital Agents that operate GUIs, terminals, and code">
+        Building agents that operate <span class="typed" data-words="GUIs|terminals|code|real software">GUIs</span><span class="caret" aria-hidden="true"></span>
+      </p>
     </header>
 
     <div class="profile">
@@ -103,106 +106,157 @@
 
     <!-- News -->
     <h2 id="news"><a href="#news">news</a></h2>
-    <div class="news">
-      <table>
-        <tr><th scope="row">Sep 2026</th><td>Released <a href="#recreationworld"><strong>RecreationWorld</strong></a>, scalable and verifiable environments for hybrid Computer-Use Agents.</td></tr>
-        <tr><th scope="row">Aug 2026</th><td><em>WeaveBench</em> and <em>ST-Lite</em> accepted by <strong>EMNLP 2026</strong>.</td></tr>
-        <tr><th scope="row">Aug 5, 2026</th><td><a href="#loopx"><strong>LoopX</strong></a> reached <a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a>.</td></tr>
-        <tr><th scope="row">Jul 2026</th><td>Started a research internship with the <strong>Qwen Team</strong> at Alibaba.</td></tr>
-        <tr><th scope="row">Jun 2026</th><td>Released <em>WeaveBench</em>, a benchmark for hybrid-interface Computer-Use Agents.</td></tr>
-        <tr><th scope="row">Apr 2026</th><td>Started a research internship at <strong>Huawei Multimodal Lab</strong>.</td></tr>
-        <tr><th scope="row">Feb 2026</th><td>Released <em>ST-Lite</em> for efficient long-horizon GUI agents.</td></tr>
-        <tr><th scope="row">Jan 2026</th><td>Began a remote research collaboration with <strong>Microsoft Research Asia</strong>.</td></tr>
-      </table>
-    </div>
+    <ol class="timeline" data-timeline>
+      <li class="tl-item k-release" style="--i:0">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Sep 2026</time>
+        <div class="tl-text">Released <a href="#recreationworld"><strong>RecreationWorld</strong></a>, scalable and verifiable environments for hybrid Computer-Use Agents. <span class="new-tag">new</span></div>
+      </li>
+      <li class="tl-item k-paper" style="--i:1">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Aug 2026</time>
+        <div class="tl-text"><em>WeaveBench</em> and <em>ST-Lite</em> accepted by <strong>EMNLP 2026</strong>.</div>
+      </li>
+      <li class="tl-item k-star" style="--i:2">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Aug 5, 2026</time>
+        <div class="tl-text"><a href="#loopx"><strong>LoopX</strong></a> reached <a href="https://trendshift.io/repositories/102379" target="_blank" rel="noopener">#1 on GitHub Trending</a>.</div>
+      </li>
+      <li class="tl-item k-job" style="--i:3">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Jul 2026</time>
+        <div class="tl-text">Started a research internship with the <strong>Qwen Team</strong> at Alibaba.</div>
+      </li>
+      <li class="tl-item k-release" style="--i:4">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Jun 2026</time>
+        <div class="tl-text">Released <em>WeaveBench</em>, a benchmark for hybrid-interface Computer-Use Agents.</div>
+      </li>
+      <li class="tl-item k-job" style="--i:5">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Apr 2026</time>
+        <div class="tl-text">Started a research internship at <strong>Huawei Multimodal Lab</strong>.</div>
+      </li>
+      <li class="tl-item k-release" style="--i:6">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Feb 2026</time>
+        <div class="tl-text">Released <em>ST-Lite</em> for efficient long-horizon GUI agents.</div>
+      </li>
+      <li class="tl-item k-job" style="--i:7">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <time>Jan 2026</time>
+        <div class="tl-text">Began a remote research collaboration with <strong>Microsoft Research Asia</strong>.</div>
+      </li>
+    </ol>
 
     <!-- Publications -->
     <h2 id="publications"><a href="#publications">selected publications</a></h2>
     <p class="section-note">Toward universal agents that can perceive, reason, and act across diverse digital interfaces.</p>
     <ol class="bibliography">
 
-      <li id="recreationworld">
-        <div class="row">
-          <div class="col-abbr">
-            <abbr class="badge b-tr">Tech Report</abbr>
-            <a class="preview" href="assets/recreationworld-figure.webp" target="_blank" rel="noopener"><img src="assets/recreationworld-preview.webp" alt="RecreationWorld overview" loading="lazy"></a>
+      <li id="recreationworld" class="featured">
+        <div class="media-frame">
+          <div class="compare" data-compare aria-label="Original application versus recreation">
+            <img class="cmp-ref" src="assets/media/rw_foodtruck_reference.webp" alt="Original application" loading="lazy">
+            <div class="cmp-rec"><img src="assets/media/rw_foodtruck_recreation.webp" alt="Recreated application" loading="lazy"></div>
+            <div class="cmp-handle"><span></span></div>
+            <span class="cmp-label cmp-l">Original app</span>
+            <span class="cmp-label cmp-r">Recreation</span>
           </div>
-          <div class="col-entry">
-            <div class="title">RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents</div>
-            <div class="author"><em class="role">Contributor</em></div>
-            <div class="periodical"><em>Technical Report</em>, 2026</div>
-            <div class="links">
-              <button class="btn abs" type="button">Abs</button>
-              <a class="btn" href="https://arxiv.org/pdf/2609.22000" target="_blank" rel="noopener">PDF</a>
-              <a class="btn" href="https://arxiv.org/abs/2609.22000" target="_blank" rel="noopener">arXiv</a>
-              <a class="btn" href="https://recreation-bench.cc" target="_blank" rel="noopener">Website</a>
-              <a class="btn" href="https://github.com/QwenLM/RecreationWorld" target="_blank" rel="noopener">Code</a>
-              <a class="btn" href="https://huggingface.co/datasets/Qwen/RecreationBench" target="_blank" rel="noopener">Dataset</a>
-            </div>
-            <p class="abstract">A framework that turns software recreation into scalable training environments with verifiable rewards, alongside a 250-task benchmark across Ubuntu, macOS, Windows, Android, and Web.</p>
+          <div class="media-bar">
+            <span class="media-caption" data-compare-caption>Food Truck · macOS · recreated by GPT-6 Astra</span>
+            <span class="media-tabs" data-compare-tabs>
+              <button type="button" class="on" data-key="foodtruck" data-caption="Food Truck · macOS · recreated by GPT-6 Astra">macOS</button>
+              <button type="button" data-key="qdirstat" data-caption="QDirStat · Ubuntu · recreated by Claude Opus 5">Ubuntu</button>
+              <button type="button" data-key="bboxeditor" data-caption="Bounding Box Editor · Windows · recreated by Claude Opus 5">Windows</button>
+              <button type="button" data-key="detox" data-caption="Detox · Web · recreated by GPT-6 Astra">Web</button>
+            </span>
+          </div>
+        </div>
+        <div class="entry">
+          <abbr class="badge b-tr">Tech Report</abbr>
+          <div class="title">RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents</div>
+          <div class="author"><em class="role core">Core Contributor</em></div>
+          <div class="periodical"><em>Technical Report</em>, 2026</div>
+          <p class="tldr">A framework that turns software recreation into scalable training environments with verifiable rewards, alongside a 250-task benchmark across Ubuntu, macOS, Windows, Android, and Web.</p>
+          <div class="links">
+            <a class="btn" href="https://arxiv.org/pdf/2609.22000" target="_blank" rel="noopener">PDF</a>
+            <a class="btn" href="https://arxiv.org/abs/2609.22000" target="_blank" rel="noopener">arXiv</a>
+            <a class="btn" href="https://recreation-bench.cc" target="_blank" rel="noopener">Website</a>
+            <a class="btn" href="https://github.com/QwenLM/RecreationWorld" target="_blank" rel="noopener">Code</a>
+            <a class="btn" href="https://huggingface.co/datasets/Qwen/RecreationBench" target="_blank" rel="noopener">Dataset</a>
+            <a class="btn" href="assets/recreationworld-figure.webp" target="_blank" rel="noopener">Figure</a>
           </div>
         </div>
       </li>
 
-      <li>
-        <div class="row">
-          <div class="col-abbr">
-            <abbr class="badge b-emnlp">EMNLP</abbr>
-            <div class="preview"><img src="assets/papers/weavebench.png" alt="WeaveBench task examples" loading="lazy"></div>
+      <li class="featured">
+        <div class="media-frame dark">
+          <video class="demo" data-demo muted playsinline preload="metadata" poster="assets/media/wb_inkscape_vectorize_logo.jpg" src="assets/media/wb_inkscape_vectorize_logo.mp4"></video>
+          <span class="rec"><i></i>agent rollout · 8× speed</span>
+          <div class="media-bar">
+            <span class="media-caption" data-demo-caption>DES · Vectorize a logo into a print-ready bundle in Inkscape</span>
+            <span class="media-tabs" data-demo-tabs>
+              <button type="button" class="on" data-src="wb_inkscape_vectorize_logo" data-caption="DES · Vectorize a logo into a print-ready bundle in Inkscape">Inkscape</button>
+              <button type="button" data-src="wb_godot_scene_node_debug" data-caption="GAM · Debug a broken scene-graph node in Godot">Godot</button>
+              <button type="button" data-src="wb_meshlab_printability_audit" data-caption="SPA · Audit a 3D mesh for printability in MeshLab">MeshLab</button>
+              <button type="button" data-src="wb_darktable_raw_tonecurve_recover" data-caption="DES · Recover a blown-out RAW photo in darktable">darktable</button>
+            </span>
           </div>
-          <div class="col-entry">
-            <div class="title">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</div>
-            <div class="author"><em class="role first">First Author</em></div>
-            <div class="periodical"><em>Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 2026</div>
-            <div class="links">
-              <button class="btn abs" type="button">Abs</button>
-              <a class="btn" href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">arXiv</a>
-              <a class="btn" href="https://weavebench.github.io/" target="_blank" rel="noopener">Website</a>
-              <a class="btn" href="https://github.com/weavebench/WeaveBench" target="_blank" rel="noopener">Code</a>
-              <a class="btn" href="https://huggingface.co/datasets/wanlilll/WeaveBench" target="_blank" rel="noopener">Dataset</a>
-            </div>
-            <p class="abstract">A benchmark of 114 real-world tasks across eight domains that require agents to interleave GUI observation with CLI and code execution; the best evaluated system reaches only 41.2% success.</p>
+        </div>
+        <div class="entry">
+          <abbr class="badge b-emnlp">EMNLP 2026</abbr>
+          <div class="title">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</div>
+          <div class="author"><em class="role first">First Author</em></div>
+          <div class="periodical"><em>Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 2026</div>
+          <p class="tldr">A benchmark of 114 real-world tasks across eight domains that require agents to interleave GUI observation with CLI and code execution; the best evaluated system reaches only 41.2% success.</p>
+          <div class="links">
+            <a class="btn" href="https://arxiv.org/abs/2606.09426" target="_blank" rel="noopener">arXiv</a>
+            <a class="btn" href="https://weavebench.github.io/" target="_blank" rel="noopener">Website</a>
+            <a class="btn" href="https://github.com/weavebench/WeaveBench" target="_blank" rel="noopener">Code</a>
+            <a class="btn" href="https://huggingface.co/datasets/wanlilll/WeaveBench" target="_blank" rel="noopener">Dataset</a>
           </div>
         </div>
       </li>
 
-      <li>
-        <div class="row">
-          <div class="col-abbr">
-            <abbr class="badge b-emnlp">EMNLP</abbr>
-            <div class="preview"><img src="assets/papers/st-lite.png" alt="ST-Lite overview" loading="lazy"></div>
-          </div>
-          <div class="col-entry">
+      <li class="pair">
+        <ol class="cards">
+        <li class="card">
+          <div class="anim-frame">
+              <canvas class="anim" data-anim="stlite" aria-label="Illustration: KV cache compression along a long GUI trajectory"></canvas>
+              <span class="anim-tag">illustration</span>
+            </div>
+          <div class="entry">
+            <abbr class="badge b-emnlp">EMNLP 2026</abbr>
             <div class="title">ST-Lite: Training-Free KV Cache Compression with Spatio-Trajectory Guidance for Long-Horizon GUI Agents</div>
             <div class="author"><em class="role first">First Author</em></div>
             <div class="periodical"><em>Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 2026</div>
+            <p class="tldr">A training-free KV cache compression method tailored to GUI interaction traces, matching or exceeding Full Cache accuracy at a 20% budget while delivering up to 2.35× decoding speedup.</p>
             <div class="links">
-              <button class="btn abs" type="button">Abs</button>
               <a class="btn" href="https://arxiv.org/abs/2603.00188" target="_blank" rel="noopener">arXiv</a>
               <a class="btn" href="https://github.com/BouwenZhou/ST-Lite" target="_blank" rel="noopener">Code</a>
+              <a class="btn" href="assets/papers/st-lite.png" target="_blank" rel="noopener">Figure</a>
             </div>
-            <p class="abstract">A training-free KV cache compression method tailored to GUI interaction traces, matching or exceeding Full Cache accuracy at a 20% budget while delivering up to 2.35× decoding speedup.</p>
           </div>
-        </div>
-      </li>
-
-      <li>
-        <div class="row">
-          <div class="col-abbr">
-            <abbr class="badge b-arxiv">arXiv</abbr>
-            <div class="preview"><img src="assets/papers/guipruner.png" alt="GUIPruner method overview" loading="lazy"></div>
-          </div>
-          <div class="col-entry">
+        </li>
+        <li class="card">
+          <div class="anim-frame">
+              <canvas class="anim" data-anim="pruner" aria-label="Illustration: visual-token pruning on a high-resolution GUI screenshot"></canvas>
+              <span class="anim-tag">illustration</span>
+            </div>
+          <div class="entry">
+            <abbr class="badge b-arxiv">arXiv 2026</abbr>
             <div class="title">GUIPruner: Spatio-Temporal Token Pruning for Efficient High-Resolution GUI Agents</div>
             <div class="author"><em class="role first">First Author</em></div>
             <div class="periodical"><em>arXiv preprint</em>, 2026</div>
+            <p class="tldr">A training-free framework that combines temporal-adaptive resolution with structure-aware visual-token pruning, achieving a 3.4× FLOPs reduction and a 3.3× vision-encoding speedup while retaining over 94% of the original performance.</p>
             <div class="links">
-              <button class="btn abs" type="button">Abs</button>
               <a class="btn" href="https://arxiv.org/abs/2602.23235" target="_blank" rel="noopener">arXiv</a>
+              <a class="btn" href="assets/papers/guipruner.png" target="_blank" rel="noopener">Figure</a>
             </div>
-            <p class="abstract">A training-free framework that combines temporal-adaptive resolution with structure-aware visual-token pruning, achieving a 3.4× FLOPs reduction and a 3.3× vision-encoding speedup while retaining over 94% of the original performance.</p>
           </div>
-        </div>
+        </li>
+        </ol>
       </li>
     </ol>
 
