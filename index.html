@@ -9,15 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260923-s">
+<link rel="stylesheet" href="style.css?v=20260923-z">
 <script>
   (() => {
     const saved = localStorage.getItem('theme');
     if (saved) document.documentElement.dataset.theme = saved;
   })();
 </script>
-<script src="main.js?v=20260923-m" defer></script>
-<script src="motion.js?v=20260923-s" defer></script>
+<script src="main.js?v=20260923-z" defer></script>
+<script src="motion.js?v=20260923-z" defer></script>
 </head>
 <body id="top">
 
@@ -192,7 +192,7 @@
       </li>
 
       <li class="feature-row">
-        <figure class="fig"><div class="motion" data-motion="weavebench" role="img" aria-label="Animated figure"></div><figcaption><b>Case (OPS).</b> The agent spots a 503 spike on the dashboard (GUI), patches <code>nginx.conf</code> in the shell (CLI / code), and re-checks the dashboard. Neither channel alone can finish the task.</figcaption></figure>
+        <figure class="fig"><div class="motion" data-motion="weavebench" role="img" aria-label="Animated figure"></div><figcaption><b>Evaluation pipeline.</b> Each task is a self-contained bundle audited against P1–P3; the agent runs one session in a real Ubuntu sandbox through a GUI plugin layered on CLI / code tools; an isolated judge re-fetches evidence, checks each clause, and zeroes shortcuts. Cycles through three real tasks (SPA, DES, OPS).</figcaption></figure>
         <div class="entry">
           <abbr class="badge b-emnlp">EMNLP 2026</abbr>
           <div class="title">WeaveBench: A Long-Horizon, Real-World Benchmark for Computer-Use Agents with Hybrid Interfaces</div>

@@ -427,3 +427,34 @@ table.skills { width: 100%; border-collapse: collapse; }
   .project-motion { grid-template-columns: 64px minmax(0, 1fr); }
   .project-motion .motion { grid-column: 1 / -1; }
 }
+
+/* ---------- Lightbox ---------- */
+.zoomable { position: relative; }
+.zoom-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #333;
+  cursor: zoom-in;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.zoomable:hover .zoom-btn, .zoom-btn:focus-visible { opacity: 1; }
+@media (hover: none) { .zoom-btn { opacity: 1; } }
+.zoom-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.zoom-rw .zoom-btn { top: auto; bottom: 52px; left: auto; right: 10px; }
+.lightbox { position: fixed; inset: 0; z-index: 200; display: none; place-items: center; background: rgba(20, 20, 22, 0.86); }
+.lightbox.open { display: grid; }
+.lightbox-inner { width: min(94vw, calc(90vh * 16 / 9)); }
+.lightbox-inner > * { width: 100%; }
+.lightbox-inner .fig-video { max-height: 90vh; }
+.lightbox-close { position: absolute; top: 14px; right: 18px; border: none; background: none; color: #fff; font-size: 2.2rem; line-height: 1; cursor: pointer; }
+body.lb-open { overflow: hidden; }

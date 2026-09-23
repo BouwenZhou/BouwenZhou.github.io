@@ -105,3 +105,45 @@ fetch('https://api.github.com/repos/loopx-project/loopx')
     }
   })
   .catch(() => {});
+
+// Enlarge any media into a lightbox; the element itself is moved so it keeps playing.
+const lightbox = document.createElement('div');
+lightbox.className = 'lightbox';
+lightbox.innerHTML = '<div class="lightbox-inner"></div><button class="lightbox-close" type="button" aria-label="Close">×</button>';
+document.body.appendChild(lightbox);
+const lbInner = lightbox.querySelector('.lightbox-inner');
+let lbState = null;
+const closeLightbox = () => {
+  if (!lbState) return;
+  const { el, holder } = lbState;
+  holder.replaceWith(el);
+  lightbox.classList.remove('open');
+  document.body.classList.remove('lb-open');
+  if (el.tagName === 'VIDEO') { el.controls = false; el.play().catch(() => {}); }
+  lbState = null;
+};
+const openLightbox = (el) => {
+  const holder = document.createElement('div');
+  holder.style.height = `${el.getBoundingClientRect().height}px`;
+  el.replaceWith(holder);
+  lbInner.appendChild(el);
+  lbState = { el, holder };
+  lightbox.classList.add('open');
+  document.body.classList.add('lb-open');
+  if (el.tagName === 'VIDEO') { el.controls = true; el.play().catch(() => {}); }
+};
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.classList.contains('lightbox-close')) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+document.querySelectorAll('.fig-video, .motion, .feature-row .media-frame').forEach((el) => {
+  const wrap = document.createElement('div');
+  wrap.className = el.classList.contains('media-frame') ? 'zoomable zoom-rw' : 'zoomable';
+  el.replaceWith(wrap);
+  wrap.appendChild(el);
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'zoom-btn';
+  btn.setAttribute('aria-label', 'Enlarge');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  btn.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(el); });
+  wrap.appendChild(btn);
+});

@@ -88,7 +88,8 @@ class Figure {
   }
   tick(now) {
     if (!this.running) return;
-    this.t = (this.t + (now - this.last) / 1000) % this.dur;
+    this.t += (now - this.last) / 1000;
+    if (this.t >= this.dur) { this.t %= this.dur; this.loop = (this.loop || 0) + 1; }
     this.last = now;
     this.render();
     requestAnimationFrame((n) => this.tick(n));
@@ -98,108 +99,103 @@ class Figure {
     ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
     ctx.save();
     ctx.globalAlpha = Math.min(1, p / 0.03, (1 - p) / 0.03);
-    this.drawFn(ctx, p);
+    this.drawFn(ctx, p, this.loop || 0);
     ctx.restore();
     this.bar.style.width = `${p * 100}%`;
   }
 }
 
-// ---------- WeaveBench: one OPS case, GUI and CLI interleaved ----------
-function weavebench() {
-  const steps = [
-    { lane: 0, at: 0.06, label: 'observe dashboard' },
-    { lane: 0, at: 0.18, label: 'inspect 503 spike' },
-    { lane: 1, at: 0.31, label: 'grep nginx.conf' },
-    { lane: 2, at: 0.43, label: 'edit timeout' },
-    { lane: 1, at: 0.55, label: 'reload nginx' },
-    { lane: 0, at: 0.68, label: 're-check dashboard' },
-    { lane: 1, at: 0.80, label: 'verify logs' },
+// ---------- WeaveBench: evaluation pipeline, one real case per loop ----------
+async function weavebench() {
+  const cases = [
+    { dom: 'SPA', title: 'Audit a 3D mesh for printability in MeshLab', img: 'spa' },
+    { dom: 'DES', title: 'Recover a blown-out RAW photo in darktable', img: 'des' },
+    { dom: 'OPS', title: 'Manage a RabbitMQ dead-letter-queue topology', img: 'ops' },
   ];
-  const laneName = ['GUI', 'CLI', 'Code'];
-  const laneColor = [C.blue, C.orange, C.purple];
-  const term = [
-    ['$ grep -n timeout /etc/nginx/nginx.conf', 0.31],
-    ['  42:  proxy_read_timeout 5s;', 0.36],
-    ['$ sed -i "42s/5s/60s/" /etc/nginx/nginx.conf', 0.43],
-    ['  42:  proxy_read_timeout 60s;', 0.48],
-    ['$ sudo nginx -s reload', 0.55],
-    ['$ tail -n 2 /var/log/nginx/error.log', 0.80],
-    ['  (no new errors)', 0.85],
-  ];
+  const imgs = await Promise.all(cases.map((c) => loadImage(`assets/media/wbcase_${c.img}.jpg`)));
+  const runtimes = ['OpenClaw', 'Codex CLI', 'Claude Code', 'Hermes'];
+  const calls = [['GUI', 'screenshot'], ['CLI', 'bash'], ['GUI', 'click'], ['Code', 'python'], ['GUI', 'drag'], ['CLI', 'bash'], ['GUI', 'screenshot'], ['Code', 'edit']];
+  const chanColor = { GUI: C.blue, CLI: C.orange, Code: C.purple };
+  const evidence = ['artifacts', 'screenshots', 'logs'];
+  const clauses = ['deliverable produced and valid', 'rendered state matches the goal', 'process steps visible in logs'];
+  const colX = [40, 330, 660], colW = [260, 300, 260];
   return {
-    dur: 11,
-    draw(ctx, p) {
-      const active = steps.filter((s) => p >= s.at).pop();
-      const lane = active ? active.lane : 0;
+    dur: 12,
+    draw(ctx, p, loop) {
+      const k = loop % cases.length, cs = cases[k], img = imgs[k];
+      const stage = p < 0.2 ? 0 : p < 0.56 ? 1 : 2;
+      const heads = ['① Task', '② Hybrid harness', '③ Trajectory-aware judge'];
+      heads.forEach((h, i) => {
+        text(ctx, h, colX[i], 30, { size: 19, weight: 700, font: SERIF, color: i === stage ? C.ink : C.muted });
+        ctx.fillStyle = i === stage ? C.ink : C.grid; ctx.fillRect(colX[i], 44, colW[i], i === stage ? 2 : 1);
+      });
+      for (let i = 0; i < 2; i++) text(ctx, '→', colX[i] + colW[i] + 15, 30, { size: 15, color: C.muted, align: 'center' });
 
-      // (a) GUI: dashboard.
-      panelLabel(ctx, '(a) GUI · Web Ops dashboard', 40, 28);
-      const gx = 40, gy = 48, gw = 420, gh = 230;
-      box(ctx, gx, gy, gw, gh, { fill: '#fff', stroke: lane === 0 ? C.blue : C.grid, lw: lane === 0 ? 2 : 1 });
-      const cx = gx + 44, cy = gy + 28, cw = gw - 66, ch = gh - 70;
-      ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
-      for (let i = 0; i <= 4; i++) { ctx.beginPath(); ctx.moveTo(cx, cy + (ch * i) / 4); ctx.lineTo(cx + cw, cy + (ch * i) / 4); ctx.stroke(); }
-      ctx.strokeStyle = C.soft; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy + ch); ctx.lineTo(cx + cw, cy + ch); ctx.stroke();
-      text(ctx, '5xx / min', cx - 36, cy - 12, { size: 12, color: C.muted });
-      text(ctx, 'time →', cx + cw, cy + ch + 16, { size: 12, color: C.muted, align: 'right' });
-      const fixed = ease(seg(p, 0.6, 0.7));
-      const pts = 70;
-      const shown = Math.floor(pts * (0.62 + 0.38 * seg(p, 0.6, 0.72)));
-      ctx.beginPath();
-      for (let i = 0; i <= shown; i++) {
-        const x = cx + (cw * i) / pts;
-        const spike = i > 30 && i < 44 ? Math.exp(-((i - 37) ** 2) / 10) * 0.78 : 0;
-        const after = i > 44 ? 0 : 1;
-        const v = 0.1 + 0.03 * Math.sin(i * 1.3) + spike * after;
-        const y = cy + ch - v * ch;
-        i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+      // ① task bundle.
+      const a0 = ease(seg(p, 0.0, 0.08));
+      ctx.save(); ctx.globalAlpha *= a0;
+      box(ctx, 40, 62, 260, 150, { fill: '#fff', stroke: stage === 0 ? C.ink : C.grid });
+      text(ctx, cs.dom, 56, 84, { size: 14, weight: 700, color: C.blue });
+      const words = cs.title.split(' '); let line = '', ly = 110;
+      words.forEach((w) => { const t = line ? `${line} ${w}` : w; if (t.length > 26) { text(ctx, line, 56, ly, { size: 15 }); line = w; ly += 22; } else line = t; });
+      text(ctx, line, 56, ly, { size: 15 });
+      text(ctx, 'bundle ℰ = (prompt, materials, checks)', 56, 192, { size: 12, color: C.soft });
+      ctx.restore();
+      [['P1 channel non-substitutable', 0.06], ['P2 long-horizon', 0.1], ['P3 cross-state', 0.14]].forEach(([t, at], i) => {
+        const a = ease(seg(p, at, at + 0.04));
+        text(ctx, `✓ ${t}`, 56, 240 + i * 24, { size: 13, color: C.green, alpha: a });
+      });
+      text(ctx, '114 tasks · 8 domains · ≥3 pilot agents', 40, 330, { size: 12, color: C.muted });
+
+      // ② harness: real desktop + tool-call stream.
+      const hx = 330, hw = 300, hh = hw * 9 / 16;
+      if (img) { ctx.save(); ctx.globalAlpha *= 0.35 + 0.65 * ease(seg(p, 0.18, 0.26)); ctx.drawImage(img, hx, 62, hw, hh); ctx.restore(); }
+      box(ctx, hx, 62, hw, hh, { stroke: stage === 1 ? C.ink : C.grid });
+      text(ctx, 'Ubuntu sandbox · real app', hx + 8, 62 + hh + 14, { size: 12, color: C.muted });
+      runtimes.forEach((r, i) => {
+        const on = stage >= 1 && Math.floor(p * 40) % 4 === i;
+        box(ctx, hx + i * 76, 62 + hh + 30, 70, 22, { fill: on ? '#f0f0f0' : '#fff', stroke: on ? C.ink : C.grid });
+        text(ctx, r, hx + i * 76 + 35, 62 + hh + 41, { size: 11, color: on ? C.ink : C.muted, align: 'center' });
+      });
+      const nCalls = Math.floor(seg(p, 0.22, 0.54) * calls.length);
+      for (let i = 0; i < nCalls; i++) {
+        const [ch, tool] = calls[i], x = hx + (i % 4) * 76, y = 62 + hh + 70 + Math.floor(i / 4) * 30;
+        box(ctx, x, y, 70, 24, { fill: '#fff', stroke: chanColor[ch] });
+        text(ctx, tool, x + 35, y + 12, { size: 11, color: chanColor[ch], align: 'center', font: MONO });
       }
-      ctx.strokeStyle = C.red; ctx.lineWidth = 2; ctx.stroke();
-      if (p > 0.18) {
-        const sx = cx + (cw * 37) / pts, sy = cy + ch - 0.88 * ch;
-        ctx.strokeStyle = C.red; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
-        ctx.strokeRect(sx - 26, sy - 8, 52, ch * 0.8); ctx.setLineDash([]);
-        text(ctx, '503 spike', sx + 32, sy + 4, { size: 13, color: C.red });
-      }
-      if (fixed > 0) text(ctx, 'recovered ✓', cx + cw - 4, cy + 14, { size: 13, color: C.green, align: 'right', alpha: fixed });
+      if (p > 0.3) text(ctx, 'GUI plugin (1 screenshot + 9 actions) over CLI / code tools', hx, 62 + hh + 146, { size: 12, color: C.soft });
 
-      // (b) CLI / code: terminal.
-      panelLabel(ctx, '(b) CLI / Code · shell', 500, 28);
-      const tx = 500, ty = 48, tw = 420, th = 230;
-      box(ctx, tx, ty, tw, th, { fill: C.panel, stroke: lane > 0 ? C.orange : C.grid, lw: lane > 0 ? 2 : 1 });
-      term.forEach(([s, at], i) => {
-        const a = seg(p, at, at + 0.04);
-        if (a <= 0) return;
-        const col = s.startsWith('$') ? C.ink : s.includes('60s') ? C.purple : C.muted;
-        text(ctx, s.slice(0, Math.ceil(s.length * a)), tx + 14, ty + 24 + i * 29, { size: 13, color: col, font: MONO });
+      // ③ judge: evidence re-fetch, clause checks, shortcut scan.
+      const jx = 660;
+      evidence.forEach((e, i) => {
+        const a = ease(seg(p, 0.56 + i * 0.03, 0.62 + i * 0.03));
+        box(ctx, jx + i * 88, 62, 80, 26, { fill: a > 0.5 ? '#f3f7fb' : '#fff', stroke: a > 0.5 ? C.blue : C.grid });
+        text(ctx, e, jx + i * 88 + 40, 75, { size: 12, color: a > 0.5 ? C.blue : C.muted, align: 'center' });
+        if (a > 0 && a < 1) {
+          ctx.strokeStyle = `rgba(31,119,180,${1 - a})`; ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.moveTo(hx + hw, 62 + hh / 2); ctx.lineTo(jx + i * 88 + 40, 90); ctx.stroke(); ctx.setLineDash([]);
+        }
       });
+      clauses.forEach((c, i) => {
+        const a = ease(seg(p, 0.66 + i * 0.05, 0.7 + i * 0.05));
+        text(ctx, `${a > 0.9 ? '☑' : '☐'}  ${c}`, jx, 116 + i * 26, { size: 13, color: a > 0.9 ? C.ink : C.muted, alpha: 0.3 + 0.7 * a });
+      });
+      const scan = seg(p, 0.8, 0.9);
+      text(ctx, '9 shortcut detectors', jx, 206, { size: 13, color: C.soft });
+      box(ctx, jx, 218, 260, 8, { fill: '#eeeeee', stroke: null });
+      box(ctx, jx, 218, 260 * scan, 8, { fill: C.green, stroke: null });
+      if (scan >= 1) text(ctx, 'no fake screenshots, hard-coded metrics, leakage …', jx, 240, { size: 12, color: C.green });
+      const sa = ease(seg(p, 0.9, 0.96));
+      text(ctx, 's = min( process , deliverable )', jx, 282, { size: 16, font: SERIF, alpha: sa });
+      text(ctx, 'zeroed if a shortcut is found', jx, 304, { size: 12, color: C.muted, alpha: sa });
 
-      // (c) Trajectory swimlanes.
-      panelLabel(ctx, '(c) Trajectory: channel used at each step', 40, 316);
-      const lx = 120, lw = 800, ly = 346, lh = 44;
-      laneName.forEach((n, i) => {
-        text(ctx, n, lx - 16, ly + i * lh + lh / 2, { size: 14, weight: 600, color: laneColor[i], align: 'right' });
-        ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(lx, ly + i * lh + lh / 2); ctx.lineTo(lx + lw, ly + i * lh + lh / 2); ctx.stroke();
-      });
-      const X = (k) => lx + 40 + (k * (lw - 80)) / (steps.length - 1);
-      const Y = (l) => ly + l * lh + lh / 2;
-      ctx.strokeStyle = C.soft; ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      let started = false;
-      steps.forEach((s, k) => {
-        if (p < s.at) return;
-        started ? ctx.lineTo(X(k), Y(s.lane)) : ctx.moveTo(X(k), Y(s.lane));
-        started = true;
-      });
-      ctx.stroke();
-      steps.forEach((s, k) => {
-        const a = ease(seg(p, s.at, s.at + 0.04));
-        if (a <= 0) return;
-        ctx.beginPath(); ctx.arc(X(k), Y(s.lane), 6.5 * a, 0, 7);
-        ctx.fillStyle = laneColor[s.lane]; ctx.fill();
-        text(ctx, `${k + 1}`, X(k), ly - 10, { size: 12, color: C.muted, align: 'center', alpha: a });
-        text(ctx, s.label, X(k), ly + 3 * lh + 14, { size: 12, color: C.soft, align: 'center', alpha: a });
+      // Footer: headline result.
+      ctx.fillStyle = C.grid; ctx.fillRect(40, 440, 880, 1);
+      text(ctx, 'Best model × harness: 41.2% PassRate', 40, 474, { size: 20, weight: 600 });
+      text(ctx, 'median 76 tool calls and 16 GUI↔CLI switches per task', 40, 502, { size: 14, color: C.soft });
+      cases.forEach((c, i) => {
+        box(ctx, 680 + i * 82, 462, 74, 26, { fill: i === k ? C.ink : '#fff', stroke: i === k ? C.ink : C.grid });
+        text(ctx, c.dom, 717 + i * 82, 475, { size: 13, weight: 600, color: i === k ? '#fff' : C.muted, align: 'center' });
       });
     },
   };
